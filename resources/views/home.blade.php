@@ -1,23 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <div class="col-lg-12 mb-4">
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                </div>
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
+                        CSS bloat and poor page performance. Custom CSS classes are used to create
+                        custom components and custom utility classes.</p>
+                    <p class="mb-0">Before working with this theme, you should become familiar with the
+                        Bootstrap framework, especially the utility classes.</p>
                 </div>
             </div>
+
         </div>
+
     </div>
-</div>
+
 @endsection

@@ -20,7 +20,7 @@ return [
      | Please change this accordingly.
      |
      */
-    'secure' => true,
+    'secure' => false,
     /*
      |-----------------------------------------------------------------------------
      | Cache configuration
