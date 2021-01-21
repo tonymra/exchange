@@ -16,8 +16,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'base_currency',
+        'is_active'
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -36,4 +41,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function alerts(){
+
+        return $this->hasMany('App\Alert');
+    }
+
+    //Check if the user account is active
+
+    public function isActive()
+    {
+
+        if ($this->is_active == 1 ) {
+
+            return true;
+
+        }else {
+
+            return false;
+        }
+    }
+
 }
