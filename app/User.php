@@ -42,8 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function alerts(){
-
+    public function alerts()
+    {
         return $this->hasMany('App\Alert');
     }
 
@@ -51,15 +51,10 @@ class User extends Authenticatable
 
     public function isActive()
     {
-
-        if ($this->is_active == 1 ) {
-
+        if ($this->is_active == 1) {
             return true;
-
-        }else {
-
+        } else {
             return false;
         }
     }
-
 }

@@ -13,20 +13,7 @@
 
         <div class="col-lg-12 mb-4">
 
-            @if (session('base_currency_updated'))
-
-                <div class="alert alert-success" role="alert">
-                    {{ session('base_currency_updated') }}
-                </div>
-
-            @endif
-
-            @if(Auth::user()->base_currency == "")
-                    <div class="alert alert-warning" role="alert">
-                        You are currently viewing exchange rates for the default base currency - EUR.
-                    </div>
-                @endif
-
+            @include('includes.alerts')
 
             <div class="card shadow mb-4">
 

@@ -14,13 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-
-    if(Auth::check()) {
+    if (Auth::check()) {
         return redirect()->route('home');
     }
 
     return view('auth.login');
-
 })->name('welcome');
 
 Auth::routes();
@@ -28,8 +26,7 @@ Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
 
 
-Route::group(['middleware'=>'admin'],function(){
-
+Route::group(['middleware'=>'admin'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
     //Base Currency
@@ -37,7 +34,7 @@ Route::group(['middleware'=>'admin'],function(){
     Route::post('/base/currency/update', 'AdminExchangeController@base_currency_update')->name('base.currency.update');
 
     //Alerts
-    Route::resource('/alerts', 'AdminAlertsController',['names'=>[
+    Route::resource('/alerts', 'AdminAlertsController', ['names'=>[
         'index'=>'admin.alerts.index',
         'create'=>'admin.alerts.create',
         'store'=>'admin.alerts.store',
@@ -46,6 +43,4 @@ Route::group(['middleware'=>'admin'],function(){
         'show'=>'admin.alerts.show',
         'update'=>'admin.alerts.update'
     ]]);
-
 });
-

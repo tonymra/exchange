@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Session;
 
 class AdminExchangeController extends Controller
 {
-    public function base_currency(){
+    public function base_currency()
+    {
+        $client = new \GuzzleHttp\Client();
 
-       $client = new \GuzzleHttp\Client();
-
-        $request = $client->request('GET', "http://data.fixer.io/api/symbols",  [
+        $request = $client->request('GET', "http://data.fixer.io/api/symbols", [
             "query" => [
                 "access_key"      => env('FIXERIO_API_KEY', 'default_key'),
             ],
@@ -20,16 +20,16 @@ class AdminExchangeController extends Controller
 
         $response = $request->getBody();
 
-        $currencies = json_decode($response,true);
+        $currencies = json_decode($response, true);
 
 
 
-        return view('base_currency')->with('currencies',$currencies);
+        return view('base_currency')->with('currencies', $currencies);
     }
 
 
-    public function base_currency_update(Request $request){
-
+    public function base_currency_update(Request $request)
+    {
         $request->validate([
             'base_currency' => 'required|max:255',
         ]);

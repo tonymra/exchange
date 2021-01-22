@@ -30,7 +30,7 @@ class HomeController extends Controller
 
         $client = new \GuzzleHttp\Client();
 
-        $request = $client->request('GET', "http://data.fixer.io/api/latest",  [
+        $request = $client->request('GET', "http://data.fixer.io/api/latest", [
             "query" => [
                 "access_key"      => env('FIXERIO_API_KEY', 'default_key'),
                 "base"      => $base_currency,
@@ -39,7 +39,7 @@ class HomeController extends Controller
 
         $response = $request->getBody();
 
-        $currencies = json_decode($response,true);
+        $currencies = json_decode($response, true);
 
         return view('home')->with(['currencies'=>$currencies,'base_currency'=>$base_currency]);
     }

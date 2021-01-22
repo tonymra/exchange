@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Session;
 
 class AdminAlertsController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('admin');
@@ -23,9 +22,9 @@ class AdminAlertsController extends Controller
      */
     public function index()
     {
-        $alerts = Alert::where('user_id',Auth::user()->id)->get();
+        $alerts = Alert::where('user_id', Auth::user()->id)->get();
 
-        return view('alerts_index')->with('alerts',$alerts);
+        return view('alerts_index')->with('alerts', $alerts);
     }
 
     /**
@@ -37,7 +36,7 @@ class AdminAlertsController extends Controller
     {
         $client = new \GuzzleHttp\Client();
 
-        $request = $client->request('GET', "http://data.fixer.io/api/symbols",  [
+        $request = $client->request('GET', "http://data.fixer.io/api/symbols", [
             "query" => [
                 "access_key"      => env('FIXERIO_API_KEY', 'default_key'),
             ],
@@ -45,10 +44,9 @@ class AdminAlertsController extends Controller
 
         $response = $request->getBody();
 
-        $currencies = json_decode($response,true);
+        $currencies = json_decode($response, true);
 
-        return view('alert_create')->with('currencies',$currencies);
-
+        return view('alert_create')->with('currencies', $currencies);
     }
 
     /**
@@ -94,12 +92,11 @@ class AdminAlertsController extends Controller
      */
     public function edit($id)
     {
-
         $alert = Alert::whereId($id)->first();
 
         $client = new \GuzzleHttp\Client();
 
-        $request = $client->request('GET', "http://data.fixer.io/api/symbols",  [
+        $request = $client->request('GET', "http://data.fixer.io/api/symbols", [
             "query" => [
                 "access_key"      => env('FIXERIO_API_KEY', 'default_key'),
             ],
@@ -107,7 +104,7 @@ class AdminAlertsController extends Controller
 
         $response = $request->getBody();
 
-        $currencies = json_decode($response,true);
+        $currencies = json_decode($response, true);
 
         return view('alert_edit')->with(['currencies'=>$currencies,'alert'=>$alert]);
     }
@@ -136,7 +133,6 @@ class AdminAlertsController extends Controller
         Session::flash('updated_alert', 'The alert has been updated !');
 
         return redirect('/alerts');
-
     }
 
     /**
@@ -155,6 +151,5 @@ class AdminAlertsController extends Controller
         Session::flash('deleted_alert', 'The alert has been deleted !');
 
         return redirect('/alerts');
-
     }
 }

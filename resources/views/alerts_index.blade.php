@@ -13,29 +13,7 @@
 
         <div class="col-lg-12 mb-4">
 
-            @if (session('alert_updated'))
-
-                <div class="alert alert-primary" role="alert">
-                    {{ session('alert_updated') }}
-                </div>
-
-            @endif
-
-                @if (session('alert_added'))
-
-                    <div class="alert alert-success" role="alert">
-                        {{ session('alert_added') }}
-                    </div>
-
-                @endif
-
-                @if (session('alert_deleted'))
-
-                    <div class="alert alert-danger" role="alert">
-                        {{ session('alert_deleted') }}
-                    </div>
-
-                @endif
+            @include('includes.alerts')
 
 
                 <div class="card shadow mb-4">
