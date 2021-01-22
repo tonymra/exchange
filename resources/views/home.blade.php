@@ -13,16 +13,34 @@
 
         <div class="col-lg-12 mb-4">
 
+            @if (session('base_currency_updated'))
+
+                <div class="alert alert-success" role="alert">
+                    {{ session('base_currency_updated') }}
+                </div>
+
+            @endif
+
+            @if(Auth::user()->base_currency == "")
+                    <div class="alert alert-warning" role="alert">
+                        You are currently viewing exchange rates for the default base currency - EUR.
+                    </div>
+                @endif
+
+
             <div class="card shadow mb-4">
+
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
+                    <h6 class="m-0 font-weight-bold text-primary"><strong>{{$base_currency}}</strong> Exchange Rates</h6>
                 </div>
                 <div class="card-body">
-                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce
-                        CSS bloat and poor page performance. Custom CSS classes are used to create
-                        custom components and custom utility classes.</p>
-                    <p class="mb-0">Before working with this theme, you should become familiar with the
-                        Bootstrap framework, especially the utility classes.</p>
+                    <ul class="list-group">
+
+                  @foreach($currencies['rates'] as $currency => $rate)
+                        <li class="list-group-item">{{$currency . " => " . $rate}}</li>
+                       @endforeach
+
+                    </ul>
                 </div>
             </div>
 

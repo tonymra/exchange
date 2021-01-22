@@ -34,7 +34,7 @@ Route::group(['middleware'=>'admin'],function(){
 
     //Base Currency
     Route::get('/base/currency', 'AdminExchangeController@base_currency')->name('base.currency');
-    Route::post('/base/currency/update', 'AdminController@base_currency_update')->name('base.currency.update');
+    Route::post('/base/currency/update', 'AdminExchangeController@base_currency_update')->name('base.currency.update');
 
     //Alerts
     Route::resource('/alerts', 'AdminAlertsController',['names'=>[

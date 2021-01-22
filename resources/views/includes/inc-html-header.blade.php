@@ -12,3 +12,13 @@
 
 <!-- Custom styles for this template-->
 <link href="{{asset('assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
+
+<script type="text/javascript">
+
+    function isNumber(evt) {
+        var iKeyCode = (evt.which) ? evt.which : evt.keyCode;
+
+        return !(iKeyCode != 46 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57));
+
+    }
+</script>

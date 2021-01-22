@@ -17,7 +17,7 @@ class CreateAlertsTable extends Migration
             $table->id();
             $table->integer('user_id')->unsigned()->index();
             $table->string('currency')->nullable();
-            $table->float('minimum')->nullable();
+            $table->string('minimum')->nullable();
             $table->timestamps();
         });
     }

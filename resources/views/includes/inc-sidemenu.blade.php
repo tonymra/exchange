@@ -28,7 +28,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{route('base.currency')}}">
                 <i class="fas fa-fw fa-cog"></i>
-                <span>Base Currency</span></a>
+                <span>Base Currency {{isset(Auth::user()->base_currency) ? "(".Auth::user()->base_currency.")":""}}</span></a>
         </li>
 
         <li class="nav-item">
