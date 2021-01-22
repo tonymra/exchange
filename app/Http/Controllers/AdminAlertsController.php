@@ -23,7 +23,7 @@ class AdminAlertsController extends Controller
      */
     public function index()
     {
-        $alerts = Alert::all();
+        $alerts = Alert::where('user_id',Auth::user()->id)->get();
 
         return view('alerts_index')->with('alerts',$alerts);
     }
