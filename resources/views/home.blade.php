@@ -21,7 +21,11 @@
                     </h6>
                 </div>
                 <div class="card-body">
+
+                    @if(isset($currencies['rates']))
+
                     <ul class="list-group">
+
 
                         @foreach($currencies['rates'] as $currency => $rate)
 
@@ -30,6 +34,12 @@
 
 
                     </ul>
+
+                        @else
+
+                        <p style="color:darkred">Please choose another base currency. Please note that not all currencies are supported on the free plan.</p>
+
+                    @endif
                 </div>
             </div>
         </div>

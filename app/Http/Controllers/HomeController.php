@@ -37,7 +37,9 @@ class HomeController extends Controller
             ],
         ]);
 
+
         $response = $request->getBody();
+
 
         $currencies = json_decode($response, true);
 
