@@ -2,7 +2,11 @@ Installation steps:
 
 1.	Clone the repository
 
+git clone https://github.com/tonymra/exchange exchange
+
 2.	Switch to the repo folder
+
+cd exchange
 
 3.	Install all the dependencies using composer
 
@@ -11,6 +15,8 @@ composer install
 4.	Copy the example env file and make the required configuration changes in the .env file
 
 cp .env.example .env
+
+Add your api key in the env file: FIXERIO_API_KEY=
 
 5.	Generate a new application key
 
